@@ -28,18 +28,25 @@ metadata:
 ```
 Lumen-H26-Pro-Encoder/
 ├── main.py                  # Parser + GUI emulator (PyQt6)
+├── cli.py                   # Legacy CLI wrapper
+├── build.py                 # Build script
 ├── h26/                     # Encoder package (headless)
+│   ├── __init__.py
 │   ├── project.py           # Data model + JSON I/O
 │   ├── image_codec.py       # Quantize + LZ4pal32 + JPG blocks
 │   ├── encoder.py           # compile() pipeline
-│   └── cli.py               # CLI: compile, parse, info, verify
+│   ├── decoder.py           # Binary parser
+│   ├── cli.py               # CLI: compile, parse, info, verify, export, build
+│   └── utils.py             # Utilities
 ├── tests/                   # 8 test files, 79 tests
-│   ├── fixtures/            # 3 real .bin files
-│   └── conftest.py          # PyQt6 stubs for headless testing
-├── docs/
-│   └── h26-watchface-spec-en.md
+│   ├── fixtures/            # Real .bin/.h26 test files
+│   ├── conftest.py          # PyQt6 stubs for headless testing
+│   └── test_*.py            # Test suites
 ├── AGENTS.md                # Agent operational notes
-└── pyproject.toml           # ruff config
+├── SKILL.md                 # Hermes skill documentation
+├── pyproject.toml           # Project config + ruff lint
+├── requirements.txt         # Python dependencies
+└── uv.lock                  # uv dependency lock
 ```
 
 ### Dependencies
