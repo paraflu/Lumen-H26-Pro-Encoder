@@ -15,7 +15,6 @@ a = Analysis(
     pathex=[],
     binaries=[],
     datas=[
-        ('docs', 'docs'),
         ('tests/fixtures', 'tests/fixtures'),
     ],
     hiddenimports=[
