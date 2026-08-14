@@ -33,7 +33,7 @@ Lumen-H26-Pro-Encoder/
 │   ├── image_codec.py       # Quantize + LZ4pal32 + JPG blocks
 │   ├── encoder.py           # compile() pipeline
 │   └── cli.py               # CLI: compile, parse, info, verify
-├── tests/                   # 8 test files, 45 tests
+├── tests/                   # 8 test files, 79 tests
 │   ├── fixtures/            # 3 real .bin files
 │   └── conftest.py          # PyQt6 stubs for headless testing
 ├── docs/
@@ -53,24 +53,36 @@ pip install ruff              # linting
 ### Run All Tests
 
 ```bash
-cd /tmp/Lumen-H26-Pro-Encoder
-python3 tests/test_smoke.py
-python3 tests/test_real_file.py
-python3 tests/test_roundtrip.py
-python3 tests/test_encoder.py
-python3 tests/test_image_codec.py
-python3 tests/test_compile.py
-python3 tests/test_image_swap.py
-python3 tests/test_cli.py
+cd ~/projects/Lumen-H26-Pro-Encoder
+uv run pytest tests/ -v   # All 79 tests must pass
+ruff check .              # Lint before commit
 ```
 
 ### CLI Commands
 
 ```bash
-python3 -m h26.cli compile project.json -o out.bin
-python3 -m h26.cli parse out.bin          # JSON dump
-python3 -m h26.cli info out.bin           # quick summary
-python3 -m h26.cli verify out.bin         # round-trip test
+# Core commands (use 'uv run' for proper environment)
+uv run python -m h26.cli compile project.json -o out.bin  # JSON → H26
+uv run python -m h26.cli parse input.h26 -o project.json  # H26 → JSON
+uv run python -m h26.cli info watchface.h26               # Quick summary
+uv run python -m h26.cli verify watchface.h26             # Round-trip test
+uv run python -m h26.cli export watchface.h26 -o assets/  # Extract assets
+uv run python -m h26.cli build project_dir/ -o output.h26 # Build from dir
+```
+
+### Git Flow
+
+```bash
+# Feature development
+git checkout -b feature/my-feature develop
+# ... work, test, commit ...
+git checkout develop && git merge feature/my-feature
+
+# Hotfix
+git checkout -b hotfix/critical-fix main
+# ... fix, test, commit ...
+git checkout main && git merge hotfix/critical-fix
+git tag YYYY.M.D  # e.g., 2026.8.14
 ```
 
 ### Programmatic API
