@@ -42,6 +42,8 @@ Lumen-H26-Pro-Encoder/
 │   ├── fixtures/            # Real .bin/.h26 test files
 │   ├── conftest.py          # PyQt6 stubs for headless testing
 │   └── test_*.py            # Test suites
+├── docs/
+│   └── h26-watchface-spec-en.md  # H26 binary format specification
 ├── AGENTS.md                # Agent operational notes
 ├── SKILL.md                 # Hermes skill documentation
 ├── pyproject.toml           # Project config + ruff lint
