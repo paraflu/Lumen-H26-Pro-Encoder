@@ -68,13 +68,13 @@ ruff check .              # Lint before commit
 ### CLI Commands
 
 ```bash
-# Core commands (use 'uv run' for proper environment)
-uv run python -m h26.cli compile project.json -o out.bin  # JSON → H26
-uv run python -m h26.cli parse input.h26 -o project.json  # H26 → JSON
-uv run python -m h26.cli info watchface.h26               # Quick summary
-uv run python -m h26.cli verify watchface.h26             # Round-trip test
-uv run python -m h26.cli export watchface.h26 -o assets/  # Extract assets
-uv run python -m h26.cli build project_dir/ -o output.h26 # Build from dir
+# Direct execution (cli.py is executable)
+./cli.py compile project.json -o out.bin         # JSON → H26
+./cli.py parse input.h26 -o project.json         # H26 → JSON
+./cli.py info watchface.h26                      # Quick summary
+./cli.py verify watchface.h26                    # Round-trip test
+./cli.py export watchface.h26 -o assets/         # Extract assets
+./cli.py build project_dir/ -o output.h26        # Build from dir
 ```
 
 ### Git Flow
